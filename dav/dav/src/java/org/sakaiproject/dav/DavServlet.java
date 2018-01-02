@@ -1113,7 +1113,7 @@ public class DavServlet extends HttpServlet
 				
 				if ((UsageSessionService.getSession() == null || UsageSessionService.getSession().isClosed()
 						|| !a.getEid().equals(UsageSessionService.getSession().getUserEid()))
-						&& (!checkWFULdapAuth(eid, pw) || !UsageSessionService.login(a, req, UsageSessionService.EVENT_LOGIN_DAV)))
+						&& (!checkWFULdapAuth(eid, pw) && !UsageSessionService.login(a, req, UsageSessionService.EVENT_LOGIN_DAV)))
 				{
 					// login failed
 					res.addHeader("WWW-Authenticate","Basic realm=\"DAV\"");
